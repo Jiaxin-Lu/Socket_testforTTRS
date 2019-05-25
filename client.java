@@ -1,3 +1,5 @@
+package com.example.runzhe.ticket;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -12,18 +14,22 @@ import java.net.Socket;
 import java.io.UnsupportedEncodingException;
 //import sun.misc.*;
 
+import java.util.Scanner;
+
 public class client
 {
-	public static Socket socket = new Socket();
+    public static Socket socket = new Socket();
+    // public static Socket socket;
 	public static OutputStream outputStream;
 	public static InputStream inputStream;
-	private static final String host = "127.0.0.1";
+    private static final String host = "59.78.38.126";
 	private static final int port = 2333;
 	
     public static void PREP() throws IOException
     {
+        System.out.println("开始连接！");
 		socket = new Socket(host, port);
-		System.out.println("DONE PREP");
+		System.out.println("连接成功！");
     }
 
     /*public static String getUTF8(String _str)
@@ -170,13 +176,18 @@ public class client
 
     public static void main(String[] args) throws IOException
     {
-        String outmes = "hello world 你好";
+        String outmes = "FUCK YOU";
         String backmes = "";
         int i = 1;
-        while (i<10)
+        while (i<2000)
         {
             PREP();
             outmes = outmes + String.valueOf(i);
+
+
+            Scanner sc = new Scanner(System.in); outmes = sc.nextLine();
+
+
             System.out.println("outmes : "+outmes);
             backmes = SEND(outmes);
             System.out.println("backmes : "+backmes);
